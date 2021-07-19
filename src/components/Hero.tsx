@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 import { store } from "../state";
 // import { actionCreators } from "../state";
 // import { useDispatch } from "react-redux";
@@ -10,11 +10,12 @@ const Hero: React.FC = () => {
     const [hero, setHero] = useState("")
     // const dispatch = useDispatch();
     const { searchHero } = useActions();
-
-    const situation = useSelector((state) => state)
+    
+    const { data, error, loading } = useTypedSelector((state) => state.heroes) //useSelector has no idea about what data you have inside ur reducer store, u must define a RootState inside the reducer
+    
     useEffect(() => {
-        console.log(situation);
-    }, [situation])
+        console.log(`data: ${JSON.stringify(data)}, error: ${error}, loading: ${loading}`);
+    }, [data, error, loading])
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -26,7 +27,9 @@ const Hero: React.FC = () => {
             <form onSubmit={onSubmit}>
                 <input value={hero} onChange={e => setHero(e.target.value)} />
                 <button>Search</button>
-                
+                {data && <h1>{data.name}</h1>}
+                {data.name ? <img style={{width: "300px", height: "300px"}} src={data.thumbnail.toString()} alt={data.name}/> : null}
+                {data && <p style={{wordWrap: "break-word", width:"300px"}}>{data.description}</p>}
             </form>
         </div>
     )
