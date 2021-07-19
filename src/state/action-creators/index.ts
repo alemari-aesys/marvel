@@ -2,23 +2,17 @@ import axios from "axios";
 import { Dispatch } from "react";
 import { ActionTypes } from "../action-types";
 import { Action } from "../actions";
-import { config } from "dotenv"
-import { resolve } from "dns";
-
 
 
 export const searchHero = (character: string) => {
-    config()
+
     return async (dispatch: Dispatch<Action>) => {
         dispatch({
             type: ActionTypes.SEARCH_HERO
         })
 
-        console.log(process.env.HASH);
-        
-
         try {
-            const response: any = await axios.get(`http://gateway.marvel.com/v1/public/characters?name=${character}&apikey=3990c265f8f5f2f50e14f9dbafaf9c21&hash=3d2682e6df9c179d92507fe3c6358136&ts=1`)
+            const response: any = await axios.get(`http://gateway.marvel.com/v1/public/characters?name=${character}&apikey=${process.env.REACT_APP_PUBLIC_KEY}&hash=${process.env.REACT_APP_HASH}&ts=1`)
             
             const { results } = response.data.data;
             
