@@ -8,7 +8,8 @@ export const searchHero = (character: string) => {
 
     return async (dispatch: Dispatch<Action>) => {
         dispatch({
-            type: ActionTypes.SEARCH_HERO
+            type: ActionTypes.SEARCH_HERO,
+            payload: character
         })
 
         try {

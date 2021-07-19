@@ -7,7 +7,8 @@ export interface dataInterface {
 }
 
 export interface searchHeroAction {
-    type: ActionTypes.SEARCH_HERO
+    type: ActionTypes.SEARCH_HERO,
+    payload: string
 }
 
 export interface searchHeroSuccessAction {

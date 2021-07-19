@@ -1,5 +1,5 @@
 export enum ActionTypes {
-    SEARCH_HERO = "searchHero",
-    SEARCH_HERO_SUCCESS = "searchHeroSuccess",
-    SEARCH_HERO_ERROR = "searchHeroError"
+    SEARCH_HERO = "hero/searchHeroAction",
+    SEARCH_HERO_SUCCESS = "hero/searchHeroSuccess",
+    SEARCH_HERO_ERROR = "hero/searchHeroError"
 }
