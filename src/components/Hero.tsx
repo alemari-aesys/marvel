@@ -30,6 +30,7 @@ const Hero: React.FC = () => {
                 {data && <h1>{data.name}</h1>}
                 {data.name ? <img style={{width: "300px", height: "300px"}} src={data.thumbnail.toString()} alt={data.name}/> : null}
                 {data && <p style={{wordWrap: "break-word", width:"300px"}}>{data.description}</p>}
+                {error && <h1>{error}</h1>}
             </form>
         </div>
     )
