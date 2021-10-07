@@ -1,4 +1,4 @@
-import { dataInterface, searchHeroAction, searchHeroErrorAction, searchHeroSuccessAction, Action } from "../actions/index"
+import { dataInterface, Action } from "../actions/index"
 import { ActionTypes } from "../action-types/index"
 
 interface heroState {

@@ -10,7 +10,8 @@ export const searchHero = (character: string) => {
         dispatch({
             type: ActionTypes.SEARCH_HERO
         })
-
+        console.log(process.env.REACT_APP_PUBLIC_KEY);
+        
         try {
             const response: any = await axios.get(`http://gateway.marvel.com/v1/public/characters?name=${character}&apikey=${process.env.REACT_APP_PUBLIC_KEY}&hash=${process.env.REACT_APP_HASH}&ts=1`)
             
@@ -30,7 +31,7 @@ export const searchHero = (character: string) => {
                 throw new Error("No such hero")
             }
 
-        } catch (err) {
+        } catch (err: any) {
             dispatch({
                 type: ActionTypes.SEARCH_HERO_ERROR,
                 payload: err.message
